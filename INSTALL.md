@@ -171,3 +171,5 @@ If you'd like to add the sticker to the specified set, you can do it manually to
 ```sql
 INSERT INTO stickers (id_sets, name) VALUES (SET_ID, "FILE_NAME.lottie");
 ```
+
+And then save your stickers to your file system in www/[SET ID]/[FILE_NAME].
