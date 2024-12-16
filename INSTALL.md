@@ -155,5 +155,19 @@ To stop the server just press **CTRL+C**.
 
 You can load the set of stickers in Yellow Client or directly on your website.
 
-- https://YOUR_SERVER/api/sticker_sets/ - JSON file with the list of sticker sets
-- https://YOUR_SERVER/api/stickers/ID/ - JSON file with the list of stickers in set specified by ID
+- https://YOUR_SERVER/api/sets/ - JSON file with the list of sticker sets
+- https://YOUR_SERVER/api/stickers?id=SET_ID - JSON file with the list of stickers in set specified by set ID
+
+## 6. Add new sets and stickers
+
+If you'd like to add the sticker sets, you can do it manually to your MariaDB database:
+
+```sql
+INSERT INTO sets (name) VALUES ("YOUR STICKER SET NAME");
+```
+
+If you'd like to add the sticker to the specified set, you can do it manually to your MariaDB database:
+
+```sql
+INSERT INTO stickers (id_sets, name) VALUES (SET_ID, "FILE_NAME.lottie");
+```
