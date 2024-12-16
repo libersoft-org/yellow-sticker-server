@@ -1,0 +1,7 @@
+{
+ "name": "yellow-sticker-server",
+ "dependencies": {
+  "mariadb": "2"
+ },
+ "license": "Unlicense"
+}
