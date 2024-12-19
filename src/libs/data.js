@@ -432,8 +432,10 @@ class Data {
   }
  }
 
- async getSets() {
-  return await this.db.query('SELECT id, name, created FROM sets');
+ async getSets(id) {
+  let query = 'SELECT id, name, created FROM sets';
+  if (id) query += ' WHERE id = ?';
+  return await this.db.query(query, [id]);
  }
 
  async getStickers(id) {

@@ -17,12 +17,25 @@ class API {
   else return { error: 1, message: 'API not found' };
  }
 
- async getSets() {
-  return await this.data.getSets();
+ async getSets(p) {
+  const res = await this.data.getSets(p.id);
+  if (res.length < 1) return { error: 1, message: 'Sticker set(s) not found' };
+  return { error: 0, data: res };
  }
 
  async getStickers(p) {
-  return await this.data.getStickers(p.id);
+  const resSet = await this.data.getSets(p.id);
+  if (resSet.length !== 1) return { error: 1, message: 'Wrong sticker set ID' };
+  const resStickers = await this.data.getStickers(p.id);
+  return {
+   error: 0,
+   data: {
+    id: resSet[0].id,
+    name: resSet[0].name,
+    created: resSet[0].created,
+    stickers: resStickers,
+   },
+  };
  }
 }
 
