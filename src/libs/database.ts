@@ -29,8 +29,6 @@ class Database {
   this.connectionConfig = {
    bigIntAsNumber: true,
    metaAsArray: false,
-   //trace: import.meta.env.VITE_YELLOW_DEBUG,
-   //debug: import.meta.env.VITE_YELLOW_DB_DEBUG,
    initializationTimeout: 1000,
    leakDetectionTimeout: 10000,
    connectionLimit: 10,

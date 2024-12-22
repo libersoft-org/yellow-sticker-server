@@ -12,9 +12,9 @@ class Data {
 
  async createDB() {
   try {
-   await this.db.query('CREATE TABLE IF NOT EXISTS sets (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(128) NOT NULL, created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)');
-   await this.db.query('CREATE TABLE IF NOT EXISTS stickers (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(64) NOT NULL, id_sets INT, created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (id_sets) REFERENCES sets(id))');
-   await this.db.query('INSERT INTO sets (name) VALUES ("Standard animated emoji")');
+   await this.db.query('CREATE TABLE IF NOT EXISTS sets (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(128) NOT NULL, animated BOOL NOT NULL DEFAULT false, created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)');
+   await this.db.query('CREATE TABLE IF NOT EXISTS stickers (id INT PRIMARY KEY AUTO_INCREMENT, id_sets INT, name VARCHAR(64) NOT NULL, created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (id_sets) REFERENCES sets(id))');
+   await this.db.query('INSERT INTO sets (name, animated) VALUES ("Standard animated emoji", true)');
    await this.db.query('INSERT INTO stickers (id_sets, name) VALUES (1, "1f600.tgs")');
    await this.db.query('INSERT INTO stickers (id_sets, name) VALUES (1, "1f603.tgs")');
    await this.db.query('INSERT INTO stickers (id_sets, name) VALUES (1, "1f604.tgs")');
