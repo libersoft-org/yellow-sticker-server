@@ -433,7 +433,7 @@ class Data {
  }
 
  async getSets(id) {
-  let query = 'SELECT id, name, created FROM sets';
+  let query = 'SELECT id, name, animated, created FROM sets';
   if (id) query += ' WHERE id = ?';
   query += ' ORDER BY id ASC';
   return await this.db.query(query, [id]);
