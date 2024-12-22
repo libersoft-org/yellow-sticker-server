@@ -32,6 +32,7 @@ class API {
    data: {
     id: resSet[0].id,
     name: resSet[0].name,
+    animated: resSet[0].animated,
     created: resSet[0].created,
     stickers: resStickers,
    },
