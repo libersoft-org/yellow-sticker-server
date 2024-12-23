@@ -1,3 +1,4 @@
+src/www/download/*
 src/node_modules/
 src/settings.json
 src/*.sock
