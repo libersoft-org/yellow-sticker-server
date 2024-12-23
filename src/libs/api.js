@@ -31,6 +31,7 @@ class API {
    error: 0,
    data: {
     id: resSet[0].id,
+    alias: resSet[0].alias,
     name: resSet[0].name,
     animated: resSet[0].animated,
     created: resSet[0].created,
