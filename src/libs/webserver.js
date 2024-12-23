@@ -106,7 +106,7 @@ class WebServer {
  async getNotFound() {
   const rootDir = Common.settings.web.root.startsWith('/') ? Common.settings.web.root : path.join(Common.appPath, Common.settings.web.root);
   const notFoundFile = Bun.file(path.join(rootDir, 'notfound.html'));
-  if (await notFoundFile.exists()) return new Response(notFoundFile, { headers: { 'Content-Type': 'text/html' } });
+  if (await notFoundFile.exists()) return new Response(notFoundFile, { status: 404, headers: { 'Content-Type': 'text/html' } });
   //return new Response('<h1>404 Not Found</h1>', { status: 404, headers: { 'Content-Type': 'text/html' } });
  }
 }
