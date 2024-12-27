@@ -88,7 +88,7 @@ class WebServer {
      return this.getFile(req);
     }
    } catch (ex) {
-    Common.addLog('Invalid URL: ' + req.url, 2);
+    Common.addLog(ex, 2);
     return await this.getNotFound();
    }
   };
