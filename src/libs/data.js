@@ -440,7 +440,10 @@ class Data {
  }
 
  async getStickers(id) {
-  return await this.db.query('SELECT id, name, created FROM stickers WHERE id_sets = ? ORDER BY id ASC', [id]);
+  let query = 'SELECT id, id_sets, name, created FROM stickers';
+  if (id) query += ' WHERE id_sets = ?';
+  query += ' ORDER BY id ASC';
+  return await this.db.query(query, [id]);
  }
 }
 

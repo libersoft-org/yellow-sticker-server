@@ -5,7 +5,6 @@ class API {
   this.data = new Data();
   this.apiMethods = {
    sets: this.getSets,
-   stickers: this.getStickers,
   };
  }
 
@@ -18,21 +17,19 @@ class API {
  }
 
  async getSets(p) {
-  const res = await this.data.getSets(p.id);
-  if (res.length < 1) return { error: 1, message: 'Sticker set(s) not found' };
-  return { error: 0, data: res };
- }
-
- async getStickers(p) {
-  const resSet = await this.data.getSets(p.id);
-  if (resSet.length !== 1) return { error: 1, message: 'Wrong sticker set ID' };
+  const resSets = await this.data.getSets(p.id);
+  if (resSets.length < 1) return { error: 1, message: 'Sticker set(s) not found' };
+  let setsMap = {};
+  for (let set of resSets) setsMap[set.id] = set;
   const resStickers = await this.data.getStickers(p.id);
+  for (let item of resStickers) {
+   if (!setsMap[item.id_sets].items) setsMap[item.id_sets].items = [];
+   setsMap[item.id_sets].items.push(item);
+  }
+
   return {
    error: 0,
-   data: {
-    ...resSet[0],
-    stickers: resStickers,
-   },
+   data: resSets,
   };
  }
 }
