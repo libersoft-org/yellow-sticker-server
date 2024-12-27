@@ -24,8 +24,8 @@ class API {
   const resStickers = await this.data.getStickers(p.id);
   for (let item of resStickers) {
    if (!setsMap[item.id_sets].items) setsMap[item.id_sets].items = [];
-   delete item.id_sets;
    setsMap[item.id_sets].items.push(item);
+   delete item.id_sets;
   }
 
   return {
