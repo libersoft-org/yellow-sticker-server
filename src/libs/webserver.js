@@ -99,7 +99,7 @@ class WebServer {
   const rootDir = Common.settings.web.root.startsWith('/') ? Common.settings.web.root : path.join(Common.appPath, Common.settings.web.root);
   if (urlPath.endsWith('/')) urlPath = path.join(urlPath, 'index.html');
   const file = Bun.file(path.join(rootDir, urlPath));
-  if (await file.exists()) return new Response(file, { headers: { 'Content-Type': file.type } });
+  if (await file.exists()) return new Response(file, { headers: { 'Content-Type': file.type, 'Access-Control-Allow-Origin': '*' } });
   return await this.getNotFound();
  }
 
