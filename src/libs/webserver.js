@@ -83,7 +83,7 @@ class WebServer {
 
     if (url.pathname.startsWith('/api/')) {
      const apiName = url.pathname.replace('/api/', '');
-     return new Response(JSON.stringify(await this.api.processAPI(apiName, Object.fromEntries(url.searchParams))), { headers: { 'Content-Type': 'application/json' } });
+     return new Response(JSON.stringify(await this.api.processAPI(apiName, Object.fromEntries(url.searchParams))), { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } });
     } else {
      return this.getFile(req);
     }
